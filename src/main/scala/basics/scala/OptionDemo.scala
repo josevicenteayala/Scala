@@ -23,4 +23,8 @@ object OptionDemo {
     case None => "?"
   }
 
+  def getValueFromOptionObject(value: String): String{
+    val response: Option[String] = Some(value)
+  }
+
 }
