@@ -1,0 +1,9 @@
+[info] TrainTest:
+[info] Create a train with 2 Stations
+[info] - should create the train successfully
+[info] Create a train with 3 Stations
+[info] - should create the train successfully
+[info] Create a train with 1 station
+[info] - should Throw an IllegalArgumentException because there is only 1 station and must be at least 2 stations
+[info] Create a train with 0 station
+[info] - should Throw an IllegalArgumentException because there is only 0 station and must be at least 2 stations
