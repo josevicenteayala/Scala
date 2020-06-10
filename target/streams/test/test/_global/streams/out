@@ -1,10 +1,10 @@
-[debug] Running TaskDef(com.lightbend.training.scalatrinin.TrainTest, org.scalatest.tools.Framework$$anon$1@51839f60, false, [SuiteSelector])
-[debug] Running TaskDef(com.lightbend.training.scalatrinin.TimeTest, org.scalatest.tools.Framework$$anon$1@51839f60, false, [SuiteSelector])
-[info] Run completed in 656 milliseconds.
-[info] Total number of tests run: 11
-[info] Suites: completed 2, aborted 0
-[info] Tests: succeeded 11, failed 0, canceled 0, ignored 0, pending 0
-[info] All tests passed.
-[debug] Passed tests:
-[debug] 	com.lightbend.training.scalatrinin.TimeTest
-[debug] 	com.lightbend.training.scalatrinin.TrainTest
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(com.lightbend.training.scalatrinin.TimeTest, org.scalatest.tools.Framework$$anon$1@58041cf1, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(com.lightbend.training.scalatrinin.TrainTest, org.scalatest.tools.Framework$$anon$1@58041cf1, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 395 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 11[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 11, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.scalatrinin.TimeTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com.lightbend.training.scalatrinin.TrainTest[0m

@@ -1,14 +1,14 @@
-[info] TimeTest:
-[info] Creating a time
-[info] - should Throw an IllegalArgumentException when the minutes are less than zero and greater than 59
-[info] - should Throw an IllegalArgumentException when the hours are less than zero and greater than 23
-[info]   should The default arguments for hours and minutes
-[info]   - should be equals to zero
-[info]   should asMinutes for Time(hour = 10)
-[info]   - should be equal to 600
-[info]   should asMinutes for Time(minutes = 40)
-[info]   - should be equal to 40
-[info]   should asMinutes for Time(2, 45)
-[info]   - should be equal to 165
-[info]   should Calling minus or -
-[info]   - should return the correct difference in minutes
+[0m[[0m[0minfo[0m] [0m[0m[32mTimeTest:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCreating a time[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Throw an IllegalArgumentException when the minutes are less than zero and greater than 59[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should Throw an IllegalArgumentException when the hours are less than zero and greater than 23[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should The default arguments for hours and minutes[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should be equals to zero[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should asMinutes for Time(hour = 10)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should be equal to 600[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should asMinutes for Time(minutes = 40)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should be equal to 40[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should asMinutes for Time(2, 45)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should be equal to 165[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  should Calling minus or -[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m  - should return the correct difference in minutes[0m[0m

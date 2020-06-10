@@ -1,2 +1,7 @@
-[debug] Acquiring lock on file F:\Projects\scalaProjects\scalabasicssbt\BasicScala\project\target\.sbt-compilation-infos\basicscala-compile\.sbt-idea-lock ...
-[debug] Releasing lock on file F:\Projects\scalaProjects\scalabasicssbt\BasicScala\project\target\.sbt-compilation-infos\basicscala-compile\.sbt-idea-lock.
+[0m[[0m[31merror[0m] [0m[0mF:\Projects\scalaProjects\scalabasicssbt\BasicScala\src\main\scala\com\lightbend\training\scalatrain\Time.scala:3:12: identifier expected but $XMLSTART$< found.[0m
+[0m[[0m[31merror[0m] [0m[0mcase class <Time(val hour:Int = 0, val minutes:Int = 0){[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0mF:\Projects\scalaProjects\scalabasicssbt\BasicScala\src\main\scala\com\lightbend\training\scalatrain\Time.scala:15:1: case classes must have a parameter list; try 'case class C()' or 'case object C'[0m
+[0m[[0m[31merror[0m] [0m[0mobject Time {[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
