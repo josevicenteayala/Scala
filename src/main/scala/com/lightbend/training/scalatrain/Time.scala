@@ -1,6 +1,6 @@
 package com.lightbend.training.scalatrain
 
-case class Time(val hour:Int = 0, val minutes:Int = 0){
+case class Time(hour:Int = 0, minutes:Int = 0){
   require(hour >= 0 && hour <= 23,"The hour must be between zero and twenty three")
   require(minutes >= 0 && minutes <= 59, "The minutes must be between zero and fifty nine")
   val asMinutes : Int = hour * 60 + minutes
