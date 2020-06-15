@@ -1,15 +1,17 @@
 package com.lightbend.training.scalatrain
 
-case class Time(hour:Int = 0, minutes:Int = 0){
-  require(hour >= 0 && hour <= 23,"The hour must be between zero and twenty three")
+case class Time(hours:Int = 0, minutes:Int = 0){
+  require(hours >= 0 && hours <= 23,"The hour must be between zero and twenty three")
   require(minutes >= 0 && minutes <= 59, "The minutes must be between zero and fifty nine")
-  val asMinutes : Int = hour * 60 + minutes
+  val asMinutes : Int = hours * 60 + minutes
 
   def minus(time:Int):Int = {
     Math.abs(asMinutes - time)
   }
 
   def -(minutesToMinus : Int) : Int = this.minus(minutesToMinus)
+
+  override lazy val toString: String = f"$hours%02d:$minutes%02d"
 }
 
 object Time {
