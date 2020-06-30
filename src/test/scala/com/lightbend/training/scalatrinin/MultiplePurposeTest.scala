@@ -50,4 +50,49 @@ class MultiplePurposeTest extends WordSpec with Matchers {
       }
     }
   }
+
+  "Inheritance" should {
+    "optimizing the inheritance" in {
+      class Car
+      trait CargoBed {
+        def abstractMethod
+
+        def concreteMethod:String = "Concrete method"
+      }
+      class Truck extends CargoBed {
+        override def abstractMethod: Unit = ???
+      }
+
+      class FordRanchero extends Car with CargoBed {
+        override def abstractMethod: Unit = ???
+      }
+
+      val fordRanchero: FordRanchero = new FordRanchero
+      println(fordRanchero)
+
+      class Topping
+      trait Pepperoni extends Topping
+      trait Mushrooms extends Topping
+
+      class Pizza extends Pepperoni with Mushrooms
+
+    }
+  }
+
+  "Matching pattern" should {
+    "Show some examples about matching pattern" in {
+      trait Date
+      trait Time
+      class DateTime() extends Date with Time {}
+
+      val myDateTime = new DateTime()
+
+      myDateTime match {
+        case d: Date => println("Matched a Date")
+        case t: Time => println("Matched a Time")
+        case _ => println("This was not a date or a time")
+      }
+    }
+  }
+
 }

@@ -1,6 +1,8 @@
 package com.lightbend.training.scalatrain
 
-case class Train(info: TrainInfo, schedule:Seq[(Time, Station)]){
+import java.sql.Time
+
+case class Train(info: TrainInfo, schedule:Seq[(TimeCustom[Time], Station)]){
   println("Size compare:: "+schedule.sizeCompare(2))
   require(schedule.sizeCompare(2) >= 0,"Schedule must contains at least 2 elements")
 

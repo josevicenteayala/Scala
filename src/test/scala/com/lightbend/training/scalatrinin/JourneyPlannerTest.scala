@@ -1,6 +1,8 @@
 package com.lightbend.training.scalatrinin
 
-import com.lightbend.training.scalatrain.{BavarianRegional, InterCityExpress, JourneyPlanner, Station, Time, Train}
+import java.sql.Time
+
+import com.lightbend.training.scalatrain.{BavarianRegional, InterCityExpress, JourneyPlanner, Station, TimeCustom, Train}
 import org.scalatest.{Matchers, WordSpec}
 
 class JourneyPlannerTest extends WordSpec with Matchers{
@@ -35,16 +37,16 @@ class JourneyPlannerTest extends WordSpec with Matchers{
       val journeyPlanner: JourneyPlanner = createJourneyPlanner
       val stops = journeyPlanner.stopsAt(Station(madrid))
       stops shouldBe(Set(
-        (Time(1,30),Train(InterCityExpress(1),List((Time(1,30),Station(madrid)), (Time(3,50),Station("Barcelona"))))),
-        (Time(1,30),Train(BavarianRegional(2),List((Time(1,30),Station(madrid)), (Time(2,0),Station("Toledo")), (Time(4,58),Station("Sevilla")))))))
+        (TimeCustom(1,30),Train(InterCityExpress(1),List((TimeCustom(1,30),Station(madrid)), (TimeCustom(3,50),Station("Barcelona"))))),
+        (TimeCustom(1,30),Train(BavarianRegional(2),List((TimeCustom(1,30),Station(madrid)), (TimeCustom(2,0),Station("Toledo")), (TimeCustom(4,58),Station("Sevilla")))))))
     }
   }
 
   def createTrains: (Train, Train) = {
-    val scheduleFasterTrain: Seq[(Time, Station)] = Seq((Time(1, 30), Station(madrid)), (Time(3, 50), Station("Barcelona")))
+    val scheduleFasterTrain: Seq[(TimeCustom[Time], Station)] = Seq((TimeCustom(1, 30), Station(madrid)), (TimeCustom(3, 50), Station("Barcelona")))
     val fasterTrain = new Train(InterCityExpress(TypeTrainOne), scheduleFasterTrain)
 
-    val scheduleRegularTrain: Seq[(Time, Station)] = Seq((Time(1, 30), Station(madrid)), (Time(2, 0), Station("Toledo")), (Time(4, 58), Station("Sevilla")))
+    val scheduleRegularTrain: Seq[(TimeCustom[Time], Station)] = Seq((TimeCustom(1, 30), Station(madrid)), (TimeCustom(2, 0), Station("Toledo")), (TimeCustom(4, 58), Station("Sevilla")))
     val regularTrain = new Train(BavarianRegional(TypeTrainTwo), scheduleRegularTrain)
     (fasterTrain, regularTrain)
   }
