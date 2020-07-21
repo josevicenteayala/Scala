@@ -1,4 +1,4 @@
-package com.lightbend.training.scalatrain
+package com.lightbend.training.scalatraining
 
 object TimeCustom {
 

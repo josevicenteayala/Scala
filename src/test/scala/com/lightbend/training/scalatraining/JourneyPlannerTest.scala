@@ -1,8 +1,7 @@
-package com.lightbend.training.scalatrinin
+package com.lightbend.training.scalatraining
 
 import java.sql.Time
 
-import com.lightbend.training.scalatrain.{BavarianRegional, InterCityExpress, JourneyPlanner, Station, TimeCustom, Train}
 import org.scalatest.{Matchers, WordSpec}
 
 class JourneyPlannerTest extends WordSpec with Matchers{
@@ -10,6 +9,7 @@ class JourneyPlannerTest extends WordSpec with Matchers{
   private val madrid = "Madrid"
   private val TypeTrainOne = 1
   private val TypeTrainTwo = 2
+  private val TypeTrainThree = 3
 
   "Create a JourneyPlanner with all stations from all trains" should {
     val setStations = Set(Station(madrid), Station("Barcelona"), Station("Toledo"), Station("Sevilla"))
@@ -42,13 +42,33 @@ class JourneyPlannerTest extends WordSpec with Matchers{
     }
   }
 
+  "Since a given two stations" should {
+    "return true if exists a train with this stations en one station between them " in {
+      val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
+      println(journeyPlanner)
+      val bool = journeyPlanner.isShortTrip(Station("Madrid"), Station("Bruselas"))
+      println("Result from isShortTrip "+bool)
+    }
+  }
+
+  "CreateSchedule" should {
+    "return a Sequence with the schedule" in {
+      val schedule: Seq[(TimeCustom[Time], Station)] = createSchedule(Seq("Madrid","Toledo"))
+      println(schedule)
+    }
+  }
+
   def createTrains: (Train, Train) = {
     val scheduleFasterTrain: Seq[(TimeCustom[Time], Station)] = Seq((TimeCustom(1, 30), Station(madrid)), (TimeCustom(3, 50), Station("Barcelona")))
-    val fasterTrain = new Train(InterCityExpress(TypeTrainOne), scheduleFasterTrain)
+    val fasterTrain = Train(InterCityExpress(TypeTrainOne), scheduleFasterTrain)
 
     val scheduleRegularTrain: Seq[(TimeCustom[Time], Station)] = Seq((TimeCustom(1, 30), Station(madrid)), (TimeCustom(2, 0), Station("Toledo")), (TimeCustom(4, 58), Station("Sevilla")))
-    val regularTrain = new Train(BavarianRegional(TypeTrainTwo), scheduleRegularTrain)
+    val regularTrain = Train(BavarianRegional(TypeTrainTwo), scheduleRegularTrain)
     (fasterTrain, regularTrain)
+  }
+
+  def createTrain(info: TrainInfo, schedule:Seq[(TimeCustom[Time], Station)]) = {
+    Train(info,schedule)
   }
 
   private def createJourneyPlanner = {
@@ -59,5 +79,34 @@ class JourneyPlannerTest extends WordSpec with Matchers{
   private def setOfTrains: Set[Train] = {
     val (fasterTrain: Train, regularTrain: Train) = createTrains
     Set(fasterTrain, regularTrain)
+  }
+
+  def createTrainInfo(infoType:Int) = {
+    infoType match {
+      case TypeTrainOne => InterCityExpress(TypeTrainOne)
+      case TypeTrainTwo => RegionalExpress(TypeTrainTwo)
+      case TypeTrainThree => BavarianRegional(TypeTrainThree)
+    }
+  }
+
+  def createSchedule(stations:Seq[String]): Seq[(TimeCustom[Time], Station)] = {
+    val collectionStations: Seq[(TimeCustom[Time], Station)] = stations.collect{
+      case stationName: String => (TimeCustom(2,30),Station(stationName))
+    }
+    collectionStations
+  }
+
+  val fasterTrain: Train = createTrain(createTrainInfo(TypeTrainOne), createSchedule(Seq("Madrid","Toledo","Sevilla","Cadiz","Valencia","Barcelona")))
+
+  val regularTrain: Train = createTrain(createTrainInfo(TypeTrainTwo), createSchedule(Seq("Madrid","Granada","Londres","Paris","Valencia","Barcelona")))
+
+  val normalTrain: Train = createTrain(createTrainInfo(TypeTrainThree), createSchedule(Seq("Madrid","Roma","Pompeya","Silicia","Turingia","Barcelona")))
+
+  val touristTrain: Train = createTrain(createTrainInfo(TypeTrainOne), createSchedule(Seq("Madrid","Cadiz","Amsterdam","Berlin","Praga","Barcelona")))
+
+  val cultureTrain: Train = createTrain(createTrainInfo(TypeTrainTwo), createSchedule(Seq("Madrid","Monaco","Bruselas","Paris","Roma","Barcelona")))
+
+  private def createJourneyPlannerWithMultipleTrains = {
+    new JourneyPlanner(Set(fasterTrain, regularTrain, normalTrain, touristTrain, cultureTrain))
   }
 }

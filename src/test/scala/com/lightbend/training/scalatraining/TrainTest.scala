@@ -1,8 +1,8 @@
-package com.lightbend.training.scalatrinin
+package com.lightbend.training.scalatraining
 
 import java.sql.Time
 
-import com.lightbend.training.scalatrain.{BavarianRegional, InterCityExpress, RegionalExpress, Station, TimeCustom, Train}
+import com.lightbend.training.scalatraining.{BavarianRegional, InterCityExpress, RegionalExpress, Station, TimeCustom, Train}
 import org.scalatest.{Matchers, WordSpec}
 
 class TrainTest extends WordSpec with Matchers{

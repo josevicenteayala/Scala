@@ -1,4 +1,4 @@
-package com.lightbend.training.scalatrinin.filter
+package com.lightbend.training.scalatraining.filter
 
 import org.scalatest.{Matchers, WordSpec}
 

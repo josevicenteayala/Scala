@@ -1,4 +1,4 @@
-package com.lightbend.training.scalatrinin.flatmap
+package com.lightbend.training.scalatraining.flatmap
 
 import org.scalatest.{Matchers, WordSpec}
 

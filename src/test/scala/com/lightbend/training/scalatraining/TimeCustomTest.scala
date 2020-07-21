@@ -1,6 +1,6 @@
-package com.lightbend.training.scalatrinin
+package com.lightbend.training.scalatraining
 
-import com.lightbend.training.scalatrain.TimeCustom
+import com.lightbend.training.scalatraining.TimeCustom
 import org.scalatest.{Matchers, WordSpec}
 
 class TimeCustomTest extends WordSpec with Matchers {

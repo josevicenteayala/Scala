@@ -1,4 +1,4 @@
-package com.lightbend.training.scalatrinin
+package com.lightbend.training.scalatraining
 
 import org.scalatest.{Matchers, WordSpec}
 
@@ -91,6 +91,18 @@ class MultiplePurposeTest extends WordSpec with Matchers {
         case d: Date => println("Matched a Date")
         case t: Time => println("Matched a Time")
         case _ => println("This was not a date or a time")
+      }
+
+      ("a"-> 1) match {
+        case("a",x) => println("X is::::: "+x)
+      }
+
+      case class TimeCase(hours: Int, minutes: Int)
+
+      TimeCase(1, 30) match {
+        case TimeCase(_, 15) => println("15 minutes past")
+        case TimeCase(1, _) => println("Sometime after 1")
+        case TimeCase(h, m) => println(s"The time is $h:$m")
       }
     }
   }
