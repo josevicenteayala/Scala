@@ -47,14 +47,50 @@ class JourneyPlannerTest extends WordSpec with Matchers{
       val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
       println(journeyPlanner)
       val bool = journeyPlanner.isShortTrip(Station("Madrid"), Station("Bruselas"))
-      println("Result from isShortTrip "+bool)
+      bool shouldBe true
+    }
+  }
+
+  "Since a given another two stations" should {
+    "return true if exists a train with this stations en one station between them " in {
+      val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
+      println(journeyPlanner)
+      val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Madrid"), Station("Bruselas"))
+      bool shouldBe true
+    }
+  }
+
+  "Since a given two stations but with more than one station between them" should {
+    "return false because exists more than on stations between them " in {
+      val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
+      println(journeyPlanner)
+      val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Amsterdam"), Station("Barcelona"))
+      bool shouldBe false
+    }
+  }
+
+  "Since a given two stations and from station does not exits" should {
+    "return false because the from station does not exits" in {
+      val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
+      println(journeyPlanner)
+      val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Medellin"), Station("Barcelona"))
+      bool shouldBe false
+    }
+  }
+
+  "Since a given two stations and to station does not exits" should {
+    "return false because the station does not exits" in {
+      val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
+      println(journeyPlanner)
+      val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Amsterdam"), Station("Medellin"))
+      bool shouldBe false
     }
   }
 
   "CreateSchedule" should {
     "return a Sequence with the schedule" in {
       val schedule: Seq[(TimeCustom[Time], Station)] = createSchedule(Seq("Madrid","Toledo"))
-      println(schedule)
+     schedule.size shouldBe  2
     }
   }
 
