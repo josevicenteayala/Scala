@@ -11,10 +11,8 @@ class JourneyPlanner (trains : Set[Train]) {
   def stopsAt(station: Station): Set [(TimeCustom[Time],Train)] = {
     for {
       train: Train <- trainsAt(station)
-      _ = println("************************************* "+train)
-      schedule <- train.schedule.filter(s=> s._2.name.equals(station.name))
-      _ = println("++++++++++++++++++++++++++ "+schedule)
-      trainsInStation = schedule._1 -> train
+      (trainCandidate,stationCandidate) <- train.schedule.filter(s=> s._2.name.equals(station.name))
+      trainsInStation = trainCandidate -> train
     } yield (trainsInStation)
   }
 

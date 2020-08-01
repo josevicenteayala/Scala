@@ -10,6 +10,18 @@ case class Train(info: TrainInfo, schedule:Seq[(TimeCustom[Time], Station)]){
 
   val map = Map((1,'a'),(2,'b'))
   map.contains(3)
+
+  protected def timaAt(station: Station): Option[TimeCustom[Time]] = {
+    schedule.find(timeStationTuple=> timeStationTuple._2 == station).map(timeStation => timeStation._1)
+  }
+
+  protected def timaAtV2(station: Station): Option[TimeCustom[Time]] = {
+    schedule.find{
+      case (time,internalStation) => internalStation == station
+    }.map{
+      case (time,_) => time
+    }
+  }
 }
 
 sealed abstract class TrainInfo {
