@@ -32,7 +32,7 @@ case class TimeCustom[Time](hours:Int = 0, minutes:Int = 0) extends Ordered[Time
   val asMinutes : Int = hours * 60 + minutes
 
   def minus(time:Time):Int = {
-    this.asMinutes - 10//TODO fix this
+    this.asMinutes - minutes
   }
 
   def -(time : Time) : Int = minus(time)

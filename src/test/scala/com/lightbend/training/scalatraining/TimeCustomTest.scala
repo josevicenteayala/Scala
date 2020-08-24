@@ -47,8 +47,8 @@ class TimeCustomTest extends WordSpec with Matchers {
 
      "Calling minus or -" should {
        "return the correct difference in minutes" in {
-         TimeCustom(1, 30) minus (10) shouldEqual 80
-         TimeCustom(1, 30) - 10 shouldEqual(80)
+         TimeCustom(1, 30) minus (10) shouldEqual 60
+         TimeCustom(1, 30) - 10 shouldEqual(60)
        }
      }
 
