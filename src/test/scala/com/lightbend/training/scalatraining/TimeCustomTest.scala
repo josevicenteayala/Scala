@@ -58,5 +58,18 @@ class TimeCustomTest extends WordSpec with Matchers {
          time.toString shouldBe("01:30")
        }
      }
+
+     "Calling fromJson method for Json with time 1:30" should {
+       "return 01:30" in {
+
+         val time = new TimeCustom(1,30)
+
+         val jsValue = time.toJson
+
+         val timeCustom: Option[TimeCustom[TimeCustom.type]] = TimeCustom.fromJson(jsValue)
+
+         timeCustom.getOrElse("").toString shouldBe("01:30")
+       }
+     }
    }
 }
