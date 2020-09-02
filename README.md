@@ -1,5 +1,5 @@
 # Scala
-Project to test Scala language.
+Project to test Scala language. Training in scala fundamentals and Functionla programming with Scala.
 
 ## Handle exceptions
 
