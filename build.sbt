@@ -4,7 +4,20 @@ version := "0.1"
 
 scalaVersion := "2.13.2"
 
-// https://mvnrepository.com/artifact/org.scalatest/scalatest
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % Test
-// https://mvnrepository.com/artifact/com.typesafe.play/play-json
-libraryDependencies += "com.typesafe.play" %% "play-json" % "2.9.0"
+lazy val Versions = new {
+  val cats      = "2.1.1"
+  val json      = "2.9.0"
+  val scalaTest = "3.0.8"
+  val circe     = "0.12.3"
+}
+
+libraryDependencies ++=
+  Seq(
+    // https://mvnrepository.com/artifact/org.scalatest/scalatest
+    "org.scalatest"     %% "scalatest"        % Versions.scalaTest % Test,
+    // https://mvnrepository.com/artifact/com.typesafe.play/play-json
+    "com.typesafe.play" %% "play-json"        % Versions.json,
+    "org.typelevel"     %% "cats-core"        % Versions.cats,
+    "io.circe"          %% "circe-core"       % Versions.circe,
+    "io.circe"          %% "circe-generic"    % Versions.circe,
+  )
