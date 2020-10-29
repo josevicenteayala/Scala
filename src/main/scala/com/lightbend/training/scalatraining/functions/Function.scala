@@ -8,7 +8,7 @@ object Function {
 
   val lessThan = (x: Int, y: Int) => x <= y
 
-  def executeGenericFunction[A,B](genericFunction:(A) => B, a:A) = genericFunction(a)
+  def executeGenericFunction[A,B](genericFunction:A => B, a:A): B = genericFunction(a)
 
   val sumTen = (x:Int) => x +10
 
