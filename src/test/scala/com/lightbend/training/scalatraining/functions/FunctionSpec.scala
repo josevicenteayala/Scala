@@ -20,6 +20,22 @@ class FunctionSpec extends WordSpec with Matchers{
     "Say hello to Vicente name" in {
       executeGenericFunction(sayHelloTo,"Vicente") shouldBe "Hello Vicente"
     }
+
+    "Using function that returns a function like sayHiToSomeone" in {
+      sayHelloToSomeone("Vicente") shouldBe "Hello Vicente"
+    }
+
+    "Using a composition of functions, language english" in {
+      greetingSomeone("english", "Vicente", "Ayala") shouldBe "Hello Vicente Ayala"
+    }
+
+    "Using a composition of functions, language spanish" in {
+      greetingSomeone("spanish", "Martha", "Duque") shouldBe "Hola Martha Duque"
+    }
+
+    "Using a composition of functions, language french" in {
+      greetingSomeone("french", "Isabel", "Ayala") shouldBe "Salut Isabel Ayala"
+    }
   }
 
 }
