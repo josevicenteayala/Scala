@@ -15,7 +15,25 @@ class PartialFunctions {
      * @param dividend
      * @return
      */
-    override def apply(dividend: Int): Int = number / dividend
+    override def apply(dividend: Int): Int = {
+      number / dividend
+    }
   }
 
+  /**
+   * This method use a PartialFunction in a collection
+   * @return List with numbers divide by 2
+   */
+  def divideNumberByNumbersInList(number:Int): List[Int] = {
+    val listOfDividends = List(1,2,3,4,5,6,7,8,9,10)
+    listOfDividends collect (divide(number))
+  }
+
+  val isEven: PartialFunction[Int, Int] = {
+    case x if x % 2 == 0 => x
+  }
+
+  val isOdd: PartialFunction[Int, Int] = {
+    case x if x % 2 == 1 => x
+  }
 }
