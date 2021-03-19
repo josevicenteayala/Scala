@@ -17,7 +17,7 @@ object VowelCount extends App {
   }
 
   def getCountV2(inputStr: String): Int = {
-    inputStr.toCharArray.map("aeiou".toCharArray.contains(_)).filter(_.equals(true)).length
+    inputStr.toCharArray.map("aeiou".toCharArray.contains(_)).count(_.equals(true))
   }
 
   def getCountV3(inputStr: String): Int = {
