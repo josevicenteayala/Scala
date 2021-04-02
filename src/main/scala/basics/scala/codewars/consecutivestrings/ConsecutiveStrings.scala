@@ -36,7 +36,6 @@ object ConsecutiveStrings extends App {
         case Nil => longestConsecutive
         case _ :: tail => {
           val currentConsecutive = listStrings.take(k).mkString("")
-          println(s"currentConsecutive $currentConsecutive longestConsecutive $longestConsecutive")
           if(listStrings.length >= k && longestConsecutive.length < currentConsecutive.length)
             getSubList(tail,k, currentConsecutive)
           else getSubList(tail,k, longestConsecutive)
