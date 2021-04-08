@@ -49,5 +49,13 @@ class SetRiviewTest extends FunSuite{
     assert(120 == setProduct)
   }
 
+  test("Seq to map") {
+    case class CouponData(couponId:Option[String] = None, couponValue:String)
+    val couponSequence = Seq(CouponData(Some("1"),"C1"), CouponData(Some("2"),"C2"),CouponData(Some("3"),"C3"),CouponData(couponValue = "C4"))
+    val couponMap: Map[String, CouponData] = couponSequence.map(c => c.couponId.getOrElse("") -> c).toMap
+    //Result Map(1 -> CouponData(Some(1),C1), 2 -> CouponData(Some(2),C2), 3 -> CouponData(Some(3),C3),  -> CouponData(None,C4))
+    println(couponMap)
+  }
+
 
 }
