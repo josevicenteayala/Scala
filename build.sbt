@@ -9,6 +9,7 @@ lazy val Versions = new {
   val json      = "2.9.0"
   val scalaTest = "3.0.8"
   val circe     = "0.12.3"
+  val liftVersion = "3.4.3"
 }
 
 libraryDependencies ++=
@@ -20,4 +21,7 @@ libraryDependencies ++=
     "org.typelevel"     %% "cats-core"        % Versions.cats,
     "io.circe"          %% "circe-core"       % Versions.circe,
     "io.circe"          %% "circe-generic"    % Versions.circe,
+    "net.liftweb"       %% "lift-webkit"      % Versions.liftVersion,
+    "net.liftweb"       %% "lift-json"      % Versions.liftVersion,
+    "ch.qos.logback"    % "logback-classic"   % "1.2.3"
   )

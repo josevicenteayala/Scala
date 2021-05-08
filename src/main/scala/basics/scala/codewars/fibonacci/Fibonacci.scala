@@ -1,5 +1,7 @@
 package basics.scala.codewars.fibonacci
 
+import scala.collection.mutable.Map
+
 /**
  * The Fibonacci sequence is traditionally used to explain tree recursion.
  * def fibonacci(n: Int): Int = n match {
@@ -30,10 +32,12 @@ package basics.scala.codewars.fibonacci
 object Fibonacci extends App {
 
   def fibonacciFunction(currentNumber: BigInt, nextNumber: BigInt): LazyList[BigInt] = {
-    println(s"currentNumber $currentNumber nextNumber $nextNumber")
     currentNumber #:: fibonacciFunction(nextNumber, currentNumber + nextNumber)
   }
 
   lazy val fib: LazyList[BigInt] = fibonacciFunction(BigInt(0), BigInt(1))
 
+
+  val memoization: Map[Int, BigInt] = Map(0 -> 0, 1 -> 1)
+  def fibonacciV2(n:Int): BigInt = memoization.getOrElseUpdate(n,fibonacciV2(n-1) + fibonacciV2(n - 2))
 }
