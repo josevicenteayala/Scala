@@ -27,4 +27,15 @@ class CalculatorTest extends FunSuite{
     val result: Either[DivisionError, Int] = calculator.divide(4,0)
     println(result.productElement(0))
   }
+
+  test("Module examples") {
+    assert(0 % 7 == 0)
+    assert(4 % 7 == 4)
+    assert(6 % 7 == 6)
+    assert(7 % 7 == 0)
+    assert(8 % 7 == 1)
+    assert(10 % 7 == 3)
+    assert(13 % 7 == 6)
+    assert(14 % 7 == 0)
+  }
 }
