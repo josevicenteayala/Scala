@@ -31,13 +31,13 @@ object MapReview {
     val map = Map(1 -> "Vin",2 -> "Isa",3 -> "Caqui")
 
     val list2 = list.map(_ * 2)
-    println(list2)
-    println(list.map(x=> x/ 0.2))
-    println(list.map(x=> "hi" *  x))
-    println(map.mapValues(x => "hi "+x))
-    println(List(List(1,2,3),List(3,4,5)).flatten)
-    println(list.flatMap(x => List(x, x+1)))
-    println(list.map(x => List(x, x+1)))
+    println(s" 1-List1 $list2")
+    println(s" 2-List2 ${list.map(x=> x/ 0.2)}")
+    println(s" 3-List3 ${list.map(x=> "hi" *  x)}")
+    println(s" 4-List4 ${map.mapValues(x => "hi "+x).toMap}")
+    println(s" 5-List5 ${List(List(1,2,3),List(3,4,5)).flatten}")
+    println(s" 6-List6 ${list.flatMap(x => List(x, x+1))}")
+    println(s" 7-List7 ${list.map(x => List(x, x+1))}")
 
     //predicate is a function that return a boolean value
     println(list.filter(x => x%2==0))
