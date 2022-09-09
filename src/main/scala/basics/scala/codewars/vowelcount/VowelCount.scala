@@ -1,7 +1,5 @@
 package basics.scala.codewars.vowelcount
 
-import java.util.stream.IntStream
-
 /**
  * Return the number (count) of vowels in the given string.
  * We will consider a, e, i, o, u as vowels for this Kata (but not y).
@@ -11,7 +9,7 @@ object VowelCount extends App {
 
   def getCount(inputStr: String): Int = {
     inputStr match {
-      case s =>  s.count(_.equals('a')) + s.count(_.equals('e')) + s.count(_.equals('i')) + s.count(_.equals('o')) + s.count(_.equals('u'))
+      case s: String =>  s.count(_.equals('a')) + s.count(_.equals('e')) + s.count(_.equals('i')) + s.count(_.equals('o')) + s.count(_.equals('u'))
       case _ => 0
     }
   }
