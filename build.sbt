@@ -22,6 +22,8 @@ libraryDependencies ++=
     "io.circe"          %% "circe-core"       % Versions.circe,
     "io.circe"          %% "circe-generic"    % Versions.circe,
     "net.liftweb"       %% "lift-webkit"      % Versions.liftVersion,
-    "net.liftweb"       %% "lift-json"      % Versions.liftVersion,
-    "ch.qos.logback"    % "logback-classic"   % "1.2.3"
+    "net.liftweb"       %% "lift-json"        % Versions.liftVersion,
+    "ch.qos.logback"    % "logback-classic"   % "1.2.3",
+    "org.creativescala" %% "doodle"           % "0.11.2",
+    "org.scalameta"     %% "munit"            % "0.7.29" % Test
   )
