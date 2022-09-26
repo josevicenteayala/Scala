@@ -1,11 +1,11 @@
 package com.lightbend.training.scalatraining.flatmap
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class flatMapSpec extends WordSpec with Matchers {
+class flatMapSpec extends AnyFlatSpec with should.Matchers {
 
-  "flat map of array Strings" should {
-    "return a String type" in {
+  "flatMap" should "flat map of array Strings" in {
       val str : String = "This is the string to test"
       val split : Array[String] = str.split(" ")
       val flatMapped : Array[Char] = split.flatMap(word => word.toUpperCase)
@@ -16,6 +16,4 @@ class flatMapSpec extends WordSpec with Matchers {
       println("map "+strings)
       strings.foreach(println)
     }
-  }
-
 }

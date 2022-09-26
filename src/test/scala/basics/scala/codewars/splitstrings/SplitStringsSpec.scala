@@ -1,22 +1,24 @@
 package basics.scala.codewars.splitstrings
 
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class SplitStringsSpec extends FunSuite {
 
-  test("split string abcdef") {
+class SplitStringsSpec extends AnyFlatSpec with should.Matchers {
+
+  "SplitStrings" should "split string abcdef" in {
     StringSplits.solution("abcdef") == List("ab","cd","ef")
   }
 
-  test("split string abc") {
+  "SplitStrings" should "split string abc" in {
     StringSplits.solution("abc") == List("ab","c")
   }
 
-  test("split string empty") {
+  "SplitStrings" should "split string empty" in {
     StringSplits.solution("") == List.empty
   }
 
-  test("test solution 2") {
+  "SplitStrings" should "test solution 2" in {
     "abcdefg".grouped(2).map(_.padTo(2,'_')).toList == List("ab","cd","ef")
   }
 }

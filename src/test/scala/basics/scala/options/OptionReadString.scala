@@ -1,10 +1,11 @@
 package basics.scala.options
 
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class OptionReadString extends FunSuite {
+class OptionReadString extends AnyFlatSpec with should.Matchers {
 
-  test("Read string in an option an split it") {
+  "OptionReadString" should "Read string in an option an split it" in {
     val config = "evaluated_days=expiring_today,expiring_in_a_week,expiring_in_a_month;another_config=new-configuration"
     val optionReadString = Some(config)
     val maybeStrings = optionReadString.map(_.toUpperCase.split(","))

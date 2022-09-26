@@ -1,26 +1,27 @@
 package basics.scala.fundamentals.fundamentals
 
 import basics.scala.fundamentals.functions.Car
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
 /*
 * Class to test som car methods
 *  */
-class CarTest extends FunSuite{
+class CarTest extends AnyFlatSpec with should.Matchers{
 
-  test("Car.carColor negative"){
+  "Car" should "Car.carColor negative" in { 
     val car = new Car
     val carColor: String = car.carColor(-1)
     assert("Red" == carColor)
   }
 
-  test("Car.carColor positive"){
+  "Car" should "Car.carColor positive" in { 
     val car = new Car
     val carColor: String = car.carColor(1)
     assert("Green" == carColor)
   }
 
-  test("Car.carArray"){
+  "Car" should "Car.carArray" in { 
     val car = new Car
     car.carArray
   }

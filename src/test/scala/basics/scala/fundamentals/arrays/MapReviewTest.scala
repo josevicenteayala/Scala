@@ -1,13 +1,14 @@
 package basics.scala.fundamentals.arrays
 
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class MapReviewTest extends FunSuite{
+class MapReviewTest extends AnyFlatSpec with should.Matchers{
 
   val mapNames = Map("1" ->"Isa","2"->"Martha","3"->"José Vicente")
   val mapScores = Map("Jhon" ->5,"Mat"->4,"James"->25)
 
-  test("Iterate over map"){
+  "MapReview" should "Iterate over map" in {
     for((key,value) <- mapNames) printf("Key: %s, Value: %s\n", key, value)
     assert(!mapNames.isEmpty)
     println("Other format")
@@ -31,24 +32,24 @@ class MapReviewTest extends FunSuite{
     println("OtherNames MAP: "+otherNames)
   }
 
-  test("Map.exists"){
+  "MapReview" should "Map.exists" in {
     assert(mapNames.exists(_._1 == "1"))
   }
 
-  test("Map.filter"){
+  "MapReview" should "Map.filter" in {
     val otherMap: Map[String, String] = mapNames.filter(_._1 == "1")
     println(otherMap)
     assert(otherMap.size == 1)
     assert(otherMap.contains("1"))
   }
 
-  test("Map.max"){
+  "MapReview" should "Map.max" in {
     val maxElement: (String, Int) = mapScores.max
     println(maxElement)
     assert(maxElement._1 == "Mat")
   }
 
-  test("Map.toBuffer"){
+  "MapReview" should "Map.toBuffer" in {
     val mapSquares: Map[Int, Int] = Map(1->1,2 ->2)
     val buffer = mapSquares.toBuffer
     println(buffer)

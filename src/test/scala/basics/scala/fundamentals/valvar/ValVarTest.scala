@@ -1,10 +1,11 @@
 package basics.scala.fundamentals.valvar
 
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class ValVarTest extends FunSuite{
+class ValVarTest extends AnyFlatSpec with should.Matchers{
 
-  test("ValVar.variableMessage"){
+  "ValVar" should "ValVar.variableMessage" in {
     /*finalMessage can't be modified*/
     println(ValVar.finalMessage)
     println(ValVar.variableMessage)

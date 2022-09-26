@@ -1,28 +1,29 @@
 package basics.scala
 
 import org.scalactic.TripleEquals
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class OptionDemoTest extends FunSuite{
+class OptionDemoTest extends AnyFlatSpec with should.Matchers {
   val capitals = Map("Colombia"->"Bogotá", "Perú"->"Lima")
 
-  test("OptionDemo.show"){
+  "OptionDemo.show" should "convert to Equalizer" in {
     assert(TripleEquals.convertToEqualizer(OptionDemo.show(capitals.get("Colombia"))) === "Bogotá" );
   }
 
-  test("OptionDemo.getValueFromOptionObject"){
+  "OptionDemo.show" should "get value from digit option object" in{
     val value: Option[String] = capitals.get("Colombia")
     val option = Option(value)
     assert(TripleEquals.convertToEqualizer(OptionDemo.getValueFromOptionObject(value)) === "Bogotá");
   }
 
-  test("Option.get"){
+  "OptionDemo.show" should "get" in{
     val option: Option[String] = Option("some text")
     val value: String = option.get
     assert(value == "some text")
   }
 
-  test("Option.getOrElse"){
+  "OptionDemo.show" should "get or else" in{
     val option1: Option[Int] = Some(4)
     val optioNone: Option[Nothing] = None
     assert(option1.getOrElse(1) == 4)
@@ -30,36 +31,36 @@ class OptionDemoTest extends FunSuite{
     assert(optioNone.getOrElse(1) == 1)
   }
 
-  test("Option.isEmpty"){
+  "OptionDemo.show" should "is empty" in{
     val optioNone: Option[Nothing] = None
     assert(optioNone.isEmpty)
   }
 
-  test("Option.productElement"){
+  "OptionDemo.show" should "validate if the product 9 exists" in{
     val option: Option[Int] = Some(9)
     assert(option.productElement(0) == 9)
   }
 
-  test("Option.exists"){
+  "OptionDemo.exists" should "validate if the product 9 exists but using a function" in{
     val option: Option[Int] = Some(9)
     assert(option.exists(num => num==9))
   }
 
-  test("Option.filter"){
+  "OptionDemo.filter" should "filter with a function" in{
     val option: Option[Int] = Some(9)
     val maybeInt: Option[Int] = option.filter(num => num == 9)
     println(maybeInt)
     assert(maybeInt.get == 9)
   }
 
-  test("Option.flatMap"){
+  "OptionDemo.show" should "flat map" in{
     val option: Option[Int] = Some(9)
-    val maybeInt = option.flatMap(num => Some(10))
+    val maybeInt = option.flatMap(_ => Some(10))
     println(maybeInt)
     assert(maybeInt.get == 10)
   }
 
-  test("Option.forEach"){
+  "OptionDemo.show" should "traverse the option" in{
     val option: Option[Int] = Some(10)
     val unit = option.foreach(num => println(num*10))
     println(unit)

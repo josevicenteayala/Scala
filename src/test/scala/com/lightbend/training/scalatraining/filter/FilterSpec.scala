@@ -1,20 +1,17 @@
 package com.lightbend.training.scalatraining.filter
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class FilterSpec extends WordSpec with Matchers {
+class FilterSpec extends AnyFlatSpec with should.Matchers {
 
-  "Apply filter to -Hello Word- text" should {
-    "contains vowels eoo" in {
+  "FilterSpec" should "Apply filter to -Hello Word- text" in {
       val str: String = "Hello World".filter(char => List('a', 'e', 'i', 'o', 'u').contains(char))
       str shouldBe("eoo")
-    }
   }
 
-  "Apply filterNot to -Hello Word- text" should {
-    "contains vowels eoo" in {
+  "FilterSpec" should "Apply filterNot to -Hello Word- text" in {
       val str: String = "Hello World".filterNot(char => List('a', 'e', 'i', 'o', 'u').contains(char))
       str shouldBe("Hll Wrld")
-    }
   }
 }

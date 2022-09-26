@@ -1,12 +1,12 @@
 package com.lightbend.training.scalatraining.options
 
 import com.lightbend.training.scalatraining.option.OptionReview
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class OptionReviewTest extends WordSpec with Matchers {
+class OptionReviewTest extends AnyFlatSpec with should.Matchers {
 
-  "Option" should {
-    "Some string" in {
+  "Option" should "Some string" in {
       val myString = "This is an string"
       Option(myString) match {
         case Some(str) => println(str)
@@ -14,18 +14,17 @@ class OptionReviewTest extends WordSpec with Matchers {
       }
     }
 
-    "Map option string" in {
+  "Option" should  "Map option string" in {
       val string = "String"
       val opt: Option[Int] = Option(string).map(str =>str.length)
       val maybeAssertion = opt.map(_ shouldBe 6)
       maybeAssertion
     }
 
-    "OptionReview" in {
+  "Option" should "OptionReview" in {
       val optionReview = new OptionReview()
       val stringReversed = optionReview.revertString(Some("Jose Vicente"))
       stringReversed shouldBe "etneciV esoJ"
     }
-  }
 
 }

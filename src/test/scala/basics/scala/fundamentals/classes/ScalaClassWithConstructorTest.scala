@@ -1,10 +1,11 @@
 package basics.scala.fundamentals.classes
 
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
-class ScalaClassWithConstructorTest extends FunSuite{
+class ScalaClassWithConstructorTest extends AnyFlatSpec with should.Matchers{
 
-  test("Constructor"){
+  "ScalaClassWithConstructor" should "create objects" in {
     val scalaClassWithConstructor = new ScalaClassWithConstructor(value = 10,name = "Vincent")
     println(scalaClassWithConstructor)
     scalaClassWithConstructor.someMethod(12,"Vin")

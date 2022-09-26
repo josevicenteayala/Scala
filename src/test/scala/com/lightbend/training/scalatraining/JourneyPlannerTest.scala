@@ -1,97 +1,79 @@
 package com.lightbend.training.scalatraining
 
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
+
 import java.sql.Time
 
-import org.scalatest.{Matchers, WordSpec}
-
-class JourneyPlannerTest extends WordSpec with Matchers{
+class JourneyPlannerTest extends AnyFlatSpec with should.Matchers {
 
   private val madrid = "Madrid"
   private val TypeTrainOne = 1
   private val TypeTrainTwo = 2
   private val TypeTrainThree = 3
 
-  "Create a JourneyPlanner with all stations from all trains" should {
+  "JourneyPlanner" should "Create a JourneyPlanner with all stations from all trains" in {
     val setStations = Set(Station(madrid), Station("Barcelona"), Station("Toledo"), Station("Sevilla"))
-
-    "create a JourneyPlanner successfully" in {
       val journeyPlanner: JourneyPlanner = createJourneyPlanner
 
       journeyPlanner.stations.isEmpty shouldEqual false
 
       setStations shouldEqual(journeyPlanner.stations)
-    }
   }
 
-  "Create a Journey Planner with faster and regular trains" should {
-    "trains at " + madrid + " station must include faster and regular trains" in {
+  "JourneyPlanner" should "Create a Journey Planner with faster and regular trains" in {
       val journeyPlanner: JourneyPlanner = createJourneyPlanner
       val trainsFiltered: Set[Train] = journeyPlanner.trainsAt(station = Station(madrid))
       trainsFiltered.exists(train=>train.info.number.equals(TypeTrainOne)) shouldBe(true)
       trainsFiltered.exists(train=>train.info.number.equals(TypeTrainTwo)) shouldBe(true)
-    }
   }
 
-  "Since a given " + madrid + " station stopsAt" should {
-    "contains a sequence from faster an regular trains with their times" in {
+  "JourneyPlanner" should "Since a given " + madrid + " station stopsAt" in {
       val journeyPlanner: JourneyPlanner = createJourneyPlanner
       val stops = journeyPlanner.stopsAt(Station(madrid))
       stops shouldBe(Set(
         (TimeCustom(1,30),Train(InterCityExpress(1),List((TimeCustom(1,30),Station(madrid)), (TimeCustom(3,50),Station("Barcelona"))))),
         (TimeCustom(1,30),Train(BavarianRegional(2),List((TimeCustom(1,30),Station(madrid)), (TimeCustom(2,0),Station("Toledo")), (TimeCustom(4,58),Station("Sevilla")))))))
-    }
   }
 
-  "Since a given two stations" should {
-    "return true if exists a train with this stations en one station between them " in {
+  "JourneyPlanner" should "return true if exists a train with this stations en one station between them " in {
       val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
       println(journeyPlanner)
       val bool = journeyPlanner.isShortTrip(Station("Madrid"), Station("Bruselas"))
       bool shouldBe true
-    }
   }
 
-  "Since a given another two stations" should {
-    "return true if exists a train with this stations en one station between them " in {
+  "JourneyPlanner" should "return true if exists a train with this stations en one station between them " in {
       val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
       println(journeyPlanner)
       val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Madrid"), Station("Bruselas"))
       bool shouldBe true
-    }
   }
 
-  "Since a given two stations but with more than one station between them" should {
-    "return false because exists more than on stations between them " in {
+  "JourneyPlanner" should "Since a given two stations but with more than one station between them" in {
       val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
       println(journeyPlanner)
       val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Amsterdam"), Station("Barcelona"))
       bool shouldBe false
-    }
   }
 
-  "Since a given two stations and from station does not exits" should {
-    "return false because the from station does not exits" in {
+  "JourneyPlanner" should "Since a given two stations and from station does not exits" in {
       val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
       println(journeyPlanner)
       val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Medellin"), Station("Barcelona"))
       bool shouldBe false
-    }
   }
 
-  "Since a given two stations and to station does not exits" should {
-    "return false because the station does not exits" in {
+  "JourneyPlanner" should "Since a given two stations and to station does not exits" in {
       val journeyPlanner: JourneyPlanner = createJourneyPlannerWithMultipleTrains
       println(journeyPlanner)
       val bool = journeyPlanner.isShortTripWithPatternMatcher(Station("Amsterdam"), Station("Medellin"))
       bool shouldBe false
-    }
   }
 
-  "CreateSchedule" should {
-    "return a Sequence with the schedule" in {
-      val schedule: Seq[(TimeCustom[Time], Station)] = createSchedule(Seq("Madrid","Toledo"))
+  "JourneyPlanner" should "return a Sequence with the schedule" in {
+    val schedule: Seq[(TimeCustom[Time], Station)] = createSchedule(Seq("Madrid","Toledo"))
      schedule.size shouldBe  2
-    }
   }
 
   def createTrains: (Train, Train) = {

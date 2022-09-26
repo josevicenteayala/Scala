@@ -1,15 +1,16 @@
 package basics.scala.codewars.narcissistic
 
-import org.scalatest.FunSuite
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should
 
 import java.time.{Clock, Instant}
 
-class NarcissisticTest extends FunSuite{
+class NarcissisticTest extends AnyFlatSpec with should.Matchers{
 
   val numberToTest153 = 153
   val numberToTest1652 = 1652
 
-  test("narcissisticV1") {
+  "Narcissistic" should "narcissisticV1"in {
     assert(Narcissistic.narcissisticV1(numberToTest153))
     assert(!Narcissistic.narcissisticV1(numberToTest1652))
 
@@ -34,17 +35,17 @@ class NarcissisticTest extends FunSuite{
 
   }
 
-  test("narcissisticV2") {
+  "Narcissistic" should "narcissisticV2"in {
     assert(Narcissistic.narcissisticV2(numberToTest153))
     assert(!Narcissistic.narcissisticV2(numberToTest1652))
   }
 
-  test("narcissisticV3") {
+  "Narcissistic" should "narcissisticV3"in {
     assert(Narcissistic.narcissisticV3(numberToTest153))
     assert(!Narcissistic.narcissisticV3(numberToTest1652))
   }
 
-  test("narcissisticV4") {
+  "Narcissistic" should "narcissisticV4"in {
     assert(Narcissistic.narcissisticV4(numberToTest153))
     assert(!Narcissistic.narcissisticV4(numberToTest1652))
   }
